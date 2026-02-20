@@ -8,7 +8,7 @@ However, I implemented the backend using FastAPI and MySQL because I am more com
 
 The application includes a public job listing interface and a protected admin panel for managing jobs and applications.
 
-Tech Stack:
+--Tech Stack:
 Backend
 
 Python 3.11
@@ -36,7 +36,7 @@ Vanilla JavaScript
 Fetch API
 
 
- Features:
+-- Features:
 Public Side
 
 List active jobs
@@ -55,7 +55,7 @@ resume upload (.pdf / .doc / .docx)
 
 optional coverLetter
 
-Admin Side
+--Admin Side
 
 Login with JWT
 
@@ -77,7 +77,7 @@ SHORTLISTED
 
 REJECTED
 
-Folder Structure:
+--Folder Structure:
 Backend
 
 app/
@@ -126,7 +126,7 @@ js/admin.js
 
 js/auth.js
 
-Setup Instructions:
+--Setup Instructions:
 Backend Setup
 
 Create a virtual environment:
@@ -154,7 +154,7 @@ JWT_ALGORITHM
 ACCESS_TOKEN_EXPIRE_MINUTES
 UPLOAD_DIR
 
-Run backend:
+--Run backend:
 
 uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
 
@@ -167,7 +167,7 @@ python db.py your_email@example.com
 
 Use these credentials to log in from the admin panel.
 
-Frontend Setup:
+--Frontend Setup:
 
 Navigate to frontend:
 
@@ -177,7 +177,7 @@ Start a simple server:
 
 python -m http.server 5500 --bind 127.0.0.1
 
-Open in browser:
+--Open in browser:
 
 http://127.0.0.1:5500/index.html
 
