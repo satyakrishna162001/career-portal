@@ -165,7 +165,7 @@ Run:
 python db.py your_email@example.com
  your_password
 
-Use these credentials to log in from the admin panel.
+--------Use these credentials to log in from the admin panel.
 
 --Frontend Setup:
 
