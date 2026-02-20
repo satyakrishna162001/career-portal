@@ -1,123 +1,78 @@
-Project Overview
+Career Page Module
+Project Overview:
 
-This project is a Career Page module where:
+This project is a Career Page module built as part of the company assignment.
+It allows users to view job openings and apply for them. An admin panel is provided to manage jobs and review applications.
 
-Public users can view job openings and apply.
-
-Admin users can manage jobs and review applications.
-
-Although the original requirement specified Node.js and Prisma, I implemented the backend using FastAPI and MySQL, as I am more comfortable with this stack and wanted to ensure a clean and well-structured implementation.
+Although the requirement mentioned Node.js and PostgreSQL, I implemented the backend using FastAPI and MySQL, as I am more comfortable with this stack and wanted to deliver a stable and clean solution.
 
 Tech Stack
+
 Backend
-
-Python 3.11
-
+Python
 FastAPI
-
 MySQL
-
-SQLAlchemy ORM
-
 JWT Authentication
 
-File upload handling
-
 Frontend
-
 HTML
-
 CSS
+Vanilla JavaScript
 
-Vanilla JavaScript (Fetch API)
+Features
 
-Features Implemented
 Public Side
 
-List active jobs
+View active job listings
 
 View job details
 
-Apply to job (Full Name, Email, Phone, Resume upload, Optional cover letter)
+Apply for a job with resume upload
 
 Admin Side
 
-Admin login using JWT
+Admin login (JWT)
 
-Create job
+Create, update, delete jobs
 
-Update job
-
-Delete job
-
-Activate / Deactivate job
+Activate or deactivate jobs
 
 View applications
 
-Update application status (APPLIED / SHORTLISTED / REJECTED)
+Update application status (APPLIED, SHORTLISTED, REJECTED)
 
-Backend Setup
+Setup Instructions
 
-Clone the repository:
+Clone the repository.
 
-git clone <repository-link>
-cd career-page-module
-
-
-Create virtual environment:
+Create and activate a virtual environment:
 
 python -m venv venv
-
-
-Activate environment:
-
-Windows:
-
 venv\Scripts\activate
-
 
 Install dependencies:
 
 pip install -r requirements.txt
 
-
-Create a .env file and configure:
+Create a .env file inside the backend folder and add:
 
 DATABASE_URL=mysql+pymysql://username:password@localhost/database_name
 SECRET_KEY=your_secret_key
-
 
 Run the server:
 
 uvicorn app.main:app --reload
 
+Open the frontend HTML files in your browser after starting the backend.
 
-Backend runs on:
+Architecture Decisions
 
-http://localhost:8000
+The project follows a simple layered structure (routers, models, schemas, services) to keep code organized.
 
-Frontend Setup
+JWT authentication is used to protect admin routes.
 
-Ensure backend server is running.
+Resume files are stored on the server, and only the file path is saved in the database.
 
-Open the frontend HTML files in the browser:
+Enums are used for application status to maintain controlled state changes.
 
-index.html (Public Job Listing)
-
-admin-login.html (Admin Panel)
-
--- Short Explanation of Architecture Decisions
-
-The project follows a layered architecture: routers, services, models, and schemas.
-
-Dependency injection is used for database sessions and authentication.
-
-JWT authentication is implemented to secure admin routes.
-
-Resume files are stored on the server and only the file path is saved in the database.
-
-Enum is used for application status to maintain controlled state transitions.
-
-Separation between public and admin APIs ensures clear responsibility and security.
-
-This implementation focuses on clean structure, proper validation, RESTful API design, and secure authentication as per the assignment evaluation criteria.
+This implementation focuses on clean structure, proper validation, secure authentication, and meeting the assignment requirements.
