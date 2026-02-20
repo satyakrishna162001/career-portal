@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Portal - Admin Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="auth-wrap">
+    <section class="auth-card">
+      <p class="eyebrow">Admin Panel</p>
+      <h1>Sign In</h1>
+      <p class="subtext">Use your admin credentials to manage jobs and applications.</p>
+
+      <div id="message" class="message"></div>
+
+      <form id="loginForm" class="form-grid">
+        <label>Email
+          <input type="text" name="email" required />
+        </label>
+
+        <label>Password
+          <input type="password" name="password" required />
+        </label>
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

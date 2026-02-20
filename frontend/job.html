@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Portal - Job Details</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="page-header">
+      <a class="link-btn" href="index.html">Back to Jobs</a>
+      <h1>Job Details</h1>
+    </header>
+
+    <div id="message" class="message"></div>
+
+    <section id="jobDetail" class="card job-detail"></section>
+
+    <section class="card">
+      <h2>Apply for this Job</h2>
+      <form id="applyForm" class="form-grid two-col" enctype="multipart/form-data">
+        <label>Full Name
+          <input type="text" name="fullName" required />
+        </label>
+
+        <label>Email
+          <input type="email" name="email" required />
+        </label>
+
+        <label>Phone
+          <input type="text" name="phone" required />
+        </label>
+
+        <label>Resume
+          <input type="file" name="resume" accept=".pdf,.doc,.docx" required />
+        </label>
+
+        <label class="full-width">Cover Letter (Optional)
+          <textarea name="coverLetter" rows="6" placeholder="Tell us why you are a good fit."></textarea>
+        </label>
+
+        <button type="submit">Submit Application</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/public.js"></script>
+</body>
+</html>
