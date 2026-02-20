@@ -8,7 +8,7 @@ However, I implemented the backend using FastAPI and MySQL because I am more com
 
 The application includes a public job listing interface and a protected admin panel for managing jobs and applications.
 
-Tech Stack
+Tech Stack:
 Backend
 
 Python 3.11
@@ -35,7 +35,8 @@ Vanilla JavaScript
 
 Fetch API
 
-Features
+
+ Features:
 Public Side
 
 List active jobs
@@ -76,7 +77,7 @@ SHORTLISTED
 
 REJECTED
 
-Folder Structure
+Folder Structure:
 Backend
 
 app/
@@ -125,7 +126,7 @@ js/admin.js
 
 js/auth.js
 
-Setup Instructions
+Setup Instructions:
 Backend Setup
 
 Create a virtual environment:
@@ -166,7 +167,7 @@ python db.py your_email@example.com
 
 Use these credentials to log in from the admin panel.
 
-Frontend Setup
+Frontend Setup:
 
 Navigate to frontend:
 
