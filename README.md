@@ -1,51 +1,134 @@
-Career Page Module
-Project Overview:
+Career Page Assignment
+Project Overview
 
-This project is a Career Page module built as part of the company assignment.
-It allows users to view job openings and apply for them. An admin panel is provided to manage jobs and review applications.
+This is a full-stack Career Page module built as part of a company assignment.
 
-Although the requirement mentioned Node.js and PostgreSQL, I implemented the backend using FastAPI and MySQL, as I am more comfortable with this stack and wanted to deliver a stable and clean solution.
+The original required stack was Node.js, Express, TypeScript, Prisma, and PostgreSQL.
+However, I implemented the backend using FastAPI and MySQL because I am more comfortable with this stack and wanted to deliver a clean, well-structured, and working solution.
+
+The application includes a public job listing interface and a protected admin panel for managing jobs and applications.
 
 Tech Stack
-
 Backend
-Python
+
+Python 3.11
+
 FastAPI
+
 MySQL
-JWT Authentication
+
+SQLAlchemy ORM
+
+JWT authentication (python-jose)
+
+bcrypt password hashing
+
+File upload handling (resume files stored on server)
 
 Frontend
+
 HTML
+
 CSS
+
 Vanilla JavaScript
 
-Features
+Fetch API
 
+Features
 Public Side
 
-View active job listings
+List active jobs
 
 View job details
 
-Apply for a job with resume upload
+Apply to a job with:
+
+fullName
+
+email
+
+phone
+
+resume upload (.pdf / .doc / .docx)
+
+optional coverLetter
 
 Admin Side
 
-Admin login (JWT)
+Login with JWT
 
-Create, update, delete jobs
+Create job
 
-Activate or deactivate jobs
+Update job
 
-View applications
+Delete job
 
-Update application status (APPLIED, SHORTLISTED, REJECTED)
+Activate / Deactivate job
+
+View applications (filtered by jobId)
+
+Update application status:
+
+APPLIED
+
+SHORTLISTED
+
+REJECTED
+
+Folder Structure
+Backend
+
+app/
+
+core (config, dependencies, security)
+
+models (admin, job, application)
+
+routes (public, admin_auth, admin_jobs, admin_applications)
+
+schemas (auth, job, application)
+
+services (admin_service, file_service)
+
+database.py
+
+main.py
+
+.env
+
+db.py (create first admin)
+
+uploads/
+
+resumes/ (stores uploaded resume files; only path is saved in DB)
+
+Frontend
+
+frontend/
+
+index.html
+
+job.html
+
+admin-login.html
+
+admin-dashboard.html
+
+styles.css
+
+js/api.js
+
+js/public.js
+
+js/admin.js
+
+js/auth.js
 
 Setup Instructions
+Backend Setup
 
-Clone the repository.
-
-Create and activate a virtual environment:
+Create a virtual environment:
 
 python -m venv venv
 venv\Scripts\activate
@@ -54,25 +137,121 @@ Install dependencies:
 
 pip install -r requirements.txt
 
-Create a .env file inside the backend folder and add:
+Create a MySQL database:
 
-DATABASE_URL=mysql+pymysql://username:password@localhost/database_name
-SECRET_KEY=your_secret_key
+career_db
 
-Run the server:
+Configure app/.env with:
 
-uvicorn app.main:app --reload
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASSWORD
+DB_NAME
+JWT_SECRET_KEY
+JWT_ALGORITHM
+ACCESS_TOKEN_EXPIRE_MINUTES
+UPLOAD_DIR
 
-Open the frontend HTML files in your browser after starting the backend.
+Run backend:
+
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8000
+
+Create First Admin
+
+Run:
+
+python db.py your_email@example.com
+ your_password
+
+Use these credentials to log in from the admin panel.
+
+Frontend Setup
+
+Navigate to frontend:
+
+cd frontend
+
+Start a simple server:
+
+python -m http.server 5500 --bind 127.0.0.1
+
+Open in browser:
+
+http://127.0.0.1:5500/index.html
+
+http://127.0.0.1:5500/admin-login.html
+
+Make sure backend is running on port 8000.
+
+API Overview
+Public
+
+GET /jobs
+GET /jobs/{job_id}
+POST /jobs/{job_id}/apply
+
+Admin Auth
+
+POST /admin/auth/login
+
+Admin Jobs
+
+POST /admin/jobs
+PUT /admin/jobs/{job_id}
+DELETE /admin/jobs/{job_id}
+PATCH /admin/jobs/{job_id}/activate
+PATCH /admin/jobs/{job_id}/deactivate
+
+Admin Applications
+
+GET /admin/applications?jobId={id}
+PATCH /admin/applications/{application_id}/status
+
+Authentication:
+
+Login returns JWT
+
+Frontend stores token in localStorage
+
+Protected requests use Authorization: Bearer <token>
 
 Architecture Decisions
 
-The project follows a simple layered structure (routers, models, schemas, services) to keep code organized.
+I followed a layered structure to keep the project organized and maintainable:
 
-JWT authentication is used to protect admin routes.
+Routes handle HTTP logic
 
-Resume files are stored on the server, and only the file path is saved in the database.
+Schemas handle validation
 
-Enums are used for application status to maintain controlled state changes.
+Services contain business logic
 
-This implementation focuses on clean structure, proper validation, secure authentication, and meeting the assignment requirements.
+Models define database structure
+
+JWT is used for securing admin routes.
+Passwords are hashed using bcrypt.
+Resume files are stored on disk and only the file path is saved in the database to keep it lightweight.
+Application status is implemented as an enum to enforce valid state transitions.
+
+End-to-End Test Flow
+
+Start backend
+
+Create admin using db.py
+
+Open frontend
+
+Log in as admin
+
+Create a job
+
+Log out
+
+Apply to the job from public page
+
+Log back in as admin
+
+View application and update status
+
+
+This project focuses on clean structure, proper validation, secure authentication, and fulfilling the assignment requirements in a practical way.
